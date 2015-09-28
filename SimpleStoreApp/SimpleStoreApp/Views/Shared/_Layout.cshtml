@@ -7,7 +7,9 @@
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
-    </head>
+    	@Styles.Render("~/Content/kendo/css")
+        @Scripts.Render("~/bundles/kendo")
+</head>
     <body>
         <header>
             <div class="content-wrapper">
@@ -42,7 +44,7 @@
             </div>
         </footer>
 
-        @Scripts.Render("~/bundles/jquery")
+        
         @RenderSection("scripts", required: false)
     </body>
 </html>

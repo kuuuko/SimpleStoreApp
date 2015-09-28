@@ -38,6 +38,29 @@ namespace SimpleStoreApp
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+
+            //Kendo script bundle
+            bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                        "~/Scripts/kendo/2015.2.902/jquery.min.js",
+                        "~/Scripts/kendo/2015.2.902/jszip.min.js",
+                        "~/Scripts/kendo/2015.2.902/kendo.all.min.js",
+                     // "~/Scripts/kendo/2015.2.902/kendo.timezones.min.js", // uncomment if using the Scheduler
+                        "~/Scripts/kendo/2015.2.902/kendo.aspnetmvc.min.js",
+                        "~/Scripts/kendo.modernizr.custom.js"
+                        ));
+
+            //Kendo style bundle 
+            bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
+                        "~/Content/kendo.compatibility.css",
+                        "~/Content/kendo/2015.2.902/kendo.common.min.css",
+                        "~/Content/kendo/2015.2.902/kendo.mobile.all.min.css",
+                        "~/Content/kendo/2015.2.902/kendo.dataviz.min.css",
+                        "~/Content/kendo/2015.2.902/kendo.default.min.css",
+                        "~/Content/kendo/2015.2.902/kendo.dataviz.default.min.css"
+                        ));
+
+            //to allow minified files in debug mode...  
+            bundles.IgnoreList.Clear();
         }
     }
 }
