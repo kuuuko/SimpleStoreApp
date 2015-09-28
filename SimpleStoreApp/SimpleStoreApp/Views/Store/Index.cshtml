@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+@(Html.Kendo().Grid<SimpleStoreApp.Models.CategoryViewModel>()
+    .Name("categoryGrid")
+    .Columns(columns =>
+    {
+        columns.Bound(item => item.viewCategoryName).Width(100);
+        columns.Bound(item => item.viewCategoryValidFrom).Width(100);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+    })
+    .ToolBar(toolbar => toolbar.Create())
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .Sortable()
+    .Pageable()
+    .Scrollable()
+    .ClientDetailTemplateId("productTemplate")
+    .HtmlAttributes(new { style = "height:600px;" })
+    .DataSource(dataSource => dataSource
+        .Ajax()
+        .PageSize(5)
+        //.Events(events => events.Error("write error handler"))  //TODO: Ovo u slucaju pogresnog unosa...
+        .Model(model => model.Id(c => c.viewCategoryId))
+        .Create(update => update.Action("CreateCategory", "Store"))
+        .Read(read => read.Action("Categories", "Store"))
+        .Update(update => update.Action("UpdateCategory", "Store"))
+        .Destroy(update => update.Action("DestroyCategory", "Store"))
+    )
+    .Events(events => events.DataBound("dataBound"))
+)
+
+<script id="productTemplate" type="text/kendo-tmpl">                              
+    @(Html.Kendo().Grid<SimpleStoreApp.Models.ProductViewModel>()
+    .Name("productGrid_#=viewCategoryId#")
+    .Columns(columns =>
+    {
+        columns.Bound(product => product.viewProductName).Width(100);
+        columns.Bound(product => product.viewProductPrice).Width(100);
+        columns.Bound(product => product.viewProductQuantity).Width(100);
+        columns.Bound(product => product.viewProductValidFrom).Width(100);
+        columns.Command(command => { command.Edit(); command.Destroy(); }).Width(100);
+    })
+    .ToolBar(toolbar => toolbar.Create())
+    .Editable(editable => editable.Mode(GridEditMode.InLine))
+    .Sortable()
+    .Pageable()
+    .DataSource(dataSorurce => dataSorurce
+        .Ajax()
+        .PageSize(5)
+        .Model(model => model.Id(c => c.viewProductId))
+        .Create(update => update.Action("CreateProduct", "Store", new { productCategoryId = "#=viewCategoryId#" }))
+        .Update(update => update.Action("UpdateProduct", "Store"))
+        .Destroy(update => update.Action("DestroyProduct", "Store"))
+        .Read(read => read.Action("Products", "Store", new { productCategoryId = "#=viewCategoryId#" }))
+        )
+    .ToClientTemplate()
+    )          
+</script>
+<script>
+    function dataBound() {
+        this.expandRow(this.tbody.find("tr.k-master-row").first())
+    }
+
+    function error_handler(e) {
+        if (e.errors) {
+            var message = "Errors:\n";
+            $.each(e.errors, function (key, value) {
+                if ('errors' in value) {
+                    $.each(value.errors, function () {
+                        message += this + "\n";
+                    });
+                }
+            });
+            alert(message);
+        }
+    }
+</script>
+
