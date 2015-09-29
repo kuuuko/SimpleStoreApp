@@ -21,7 +21,7 @@ namespace SimpleStoreApp.Controllers
             return View();
         }
 
-
+        
         public ActionResult Categories([DataSourceRequest]DataSourceRequest request)
         {
             List<CategoryViewModel> categoriesList = new List<CategoryViewModel>();
@@ -92,7 +92,6 @@ namespace SimpleStoreApp.Controllers
             }
             return Json(new[] { category }.ToDataSourceResult(request, ModelState));
         }
-
 
         public ActionResult Products([DataSourceRequest]DataSourceRequest request, string productCategoryId)
         {

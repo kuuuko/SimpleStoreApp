@@ -20,7 +20,6 @@
     .DataSource(dataSource => dataSource
         .Ajax()
         .PageSize(5)
-        //.Events(events => events.Error("write error handler"))  //TODO: Ovo u slucaju pogresnog unosa...
         .Model(model => model.Id(c => c.viewCategoryId))
         .Create(update => update.Action("CreateCategory", "Store"))
         .Read(read => read.Action("Categories", "Store"))
@@ -61,46 +60,4 @@
     function dataBound() {
         this.expandRow(this.tbody.find("tr.k-master-row").first())
     }
-
-    function error_handler(e) {
-        if (e.errors) {
-            var message = "Errors:\n";
-            $.each(e.errors, function (key, value) {
-                if ('errors' in value) {
-                    $.each(value.errors, function () {
-                        message += this + "\n";
-                    });
-                }
-            });
-            alert(message);
-        }
-    }
 </script>
-
-<style>
-    .k-detail-cell .k-tabstrip .k-content {
-        padding: 0.2em;
-    }
-    .employee-details ul
-    {
-        list-style:none;
-        font-style:italic;
-        margin: 15px;
-        padding: 0;
-    }
-    .employee-details ul li
-    {
-        margin: 0;
-        line-height: 1.7em;
-    }
-
-    .employee-details label
-    {
-        display:inline-block;
-        width:90px;
-        padding-right: 10px;
-        text-align: right;
-        font-style:normal;
-        font-weight:bold;
-    }
-</style>
