@@ -8,10 +8,17 @@ namespace SimpleStoreApp.Models
 {
     public class CategoryViewModel
     {
-        //TODO: Add validation
+        [Required]
         public int viewCategoryId { get; set; }
-        [Display(Name="Name")]
+
+        [Required]
+        [StringLength(maximumLength:20)]
+        [Display(Name="Name", Description="Category Name")]
         public string viewCategoryName { get; set; }
+
+        [Required]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
+        [Display(Name = "ValidFrom", Description = "valid from")]
         public DateTime viewCategoryValidFrom { get; set; } 
     }
 }

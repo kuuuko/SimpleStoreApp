@@ -7,9 +7,11 @@ using System.Web;
 using System.Web.Mvc;
 using Kendo.Mvc.Extensions;
 using System.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace SimpleStoreApp.Controllers
-{
+{   
+    [Authorize]
     public partial class StoreController : Controller
     {
         private myDBContext db = new myDBContext();

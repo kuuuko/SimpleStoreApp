@@ -44,7 +44,7 @@ namespace SimpleStoreApp
                         "~/Scripts/kendo/2015.2.902/jquery.min.js",
                         "~/Scripts/kendo/2015.2.902/jszip.min.js",
                         "~/Scripts/kendo/2015.2.902/kendo.all.min.js",
-                     // "~/Scripts/kendo/2015.2.902/kendo.timezones.min.js", // uncomment if using the Scheduler
+                    //  "~/Scripts/kendo/2015.2.902/kendo.timezones.min.js", // uncomment if using the Scheduler
                         "~/Scripts/kendo/2015.2.902/kendo.aspnetmvc.min.js",
                         "~/Scripts/kendo.modernizr.custom.js"
                         ));
@@ -55,8 +55,10 @@ namespace SimpleStoreApp
                         "~/Content/kendo/2015.2.902/kendo.common.min.css",
                         "~/Content/kendo/2015.2.902/kendo.mobile.all.min.css",
                         "~/Content/kendo/2015.2.902/kendo.dataviz.min.css",
-                        "~/Content/kendo/2015.2.902/kendo.default.min.css",
-                        "~/Content/kendo/2015.2.902/kendo.dataviz.default.min.css"
+                        "~/Content/kendo/2015.2.902/kendo.blueopal.min.css",
+                        "~/Content/kendo/2015.2.902/kendo.dataviz.blueopal.min.css"
+                    //  "~/Content/kendo/2015.2.902/kendo.default.min.css",
+                    //  "~/Content/kendo/2015.2.902/kendo.dataviz.default.min.css"
                         ));
 
             //to allow minified files in debug mode...  

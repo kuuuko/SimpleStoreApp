@@ -23,8 +23,8 @@ namespace SimpleStoreApp
             //    consumerSecret: "");
 
             //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            //    appId: "mycode",
+            //    appSecret: "mysecret");
 
             //OAuthWebSecurity.RegisterGoogleClient();
         }
